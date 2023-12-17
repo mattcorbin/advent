@@ -1,4 +1,6 @@
-use std::fs;
+#!/bin/bash
+
+mainrs='use std::fs;
 
 fn part1(input: &str) -> usize {
     0
@@ -29,4 +31,10 @@ mod tests {
         let input = fs::read_to_string("test.txt").expect("test.txt should exist");
         assert_eq!(0, part2(&input));
     }
-}
+}'
+
+for i in {1..25}; do
+  rm -rf "day$i"
+  cargo new "day$i"
+  echo "${mainrs}" > "day$i/src/main.rs"
+done
